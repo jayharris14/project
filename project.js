@@ -200,7 +200,7 @@ var allper=mper.map(getper)
 
 
 
-var drawPlot2=function(mper,screen,xScale2,yscale2 )
+var drawPlot2=function(mper,screen2,xScale2,yscale2 )
 {   
 console.log("mper", mper)
   d3.select("#graph")
@@ -248,7 +248,7 @@ console.log("mper", mper)
 {
   var labels2 = d3.select("#graph2")
   .append("g")
-  .classed("labels",true)
+  .classed("labels2",true)
 
 labels2.append("text")
   .text("GDP")
@@ -259,10 +259,10 @@ labels2.append("text")
 
 labels2.append("text")
   .text("% of Minorities in Management")
-  .classed("label",true)
+  .classed("label2",true)
   .attr("text-anchor","middle")
   .attr("x",margins2.left+(graphDim2.width/2))
-  .attr("y",screen.height)
+  .attr("y",screen2.height)
 
 labels2.append("g")
   .attr("transform","translate(20,"+
@@ -287,16 +287,16 @@ d3.select("#graph2")
  
 var xScale2=d3.scaleLinear()
 .domain([25, 80])
-.range([0,screen.width])
+.range([0,screen2.width])
 
 var yscale2=d3.scaleLinear()
 .domain([0,2600])
-.range([screen.height,0])
+.range([screen2.height,0])
 
 
  
  
-var createAxes2 = function(screen,margins2,mper,
+var createAxes2 = function(screen2,margins2,mper,
                            target2,xScale2,yscale2)
 {
     var xAxis2 = d3.axisBottom(xScale2);
@@ -314,12 +314,12 @@ var createAxes2 = function(screen,margins2,mper,
         .call(yAxis2)
 }   
 
-    var createLabels2 = function(screen,margins2,
+    var createLabels2 = function(screen2,margins2,
 mper,target2)
 {
         var labels2 = d3.select("target2")
         .append("g")
-        .classed("labels",true)
+        .classed("labels2",true)
         
     labels2.append("text")
         .text("GDP")
@@ -340,7 +340,7 @@ mper,target2)
               (margins2.top+(graph2.height/2))+")")
         .append("text")
         .text("GDP")
-        .classed("label",true)
+        .classed("label2",true)
         .attr("text-anchor","middle")
         .attr("transform","rotate(90)")
     
@@ -348,18 +348,18 @@ mper,target2)
 
  var graph2 =
         {
-            width:screen.width-margins2.left-margins2.right,
-            height:screen.height - margins2.top-margins2.bottom
+            width:screen2.width-margins2.left-margins2.right,
+            height:screen2.height - margins2.top-margins2.bottom
         }
     console.log(graph2);
 
     d3.select("#graph2")
-    .attr("width",screen.width)
-    .attr("height",screen.height)
+    .attr("width",screen2.width)
+    .attr("height",screen2.height)
 
     var target = d3.select("#graph2")
     .append("g")
-    .attr("id","#graph")
+    .attr("id","#graph2")
     .attr("transform",
           "translate("+margins2.left+","+
                         margins2.top+")");
@@ -383,6 +383,7 @@ mper,target)
 }
 
 intialgraph2(mper)
+
 
     
 
